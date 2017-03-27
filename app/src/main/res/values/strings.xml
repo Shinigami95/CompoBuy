@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">CompoBuy</string>
+    <string name="tv_user">Usuario:</string>
+    <string name="et_user">Usuario</string>
+    <string name="tv_pass">Contraseña:</string>
+    <string name="et_pass">Contraseña</string>
+    <string name="tv_rep_pass">Repetir contraseña:</string>
+    <string name="et_rep_pass">Repetir contraseña</string>
+    <string name="et_date">Fecha de nacimiento</string>
+    <string name="tv_date">Fecha de nacimiento:</string>
+    <string name="tv_city">Ciudad:</string>
+    <string name="et_city">Ciudad</string>
+    <string name="bt_date">Fecha</string>
+    <string name="bt_reg">Registrarse</string>
+    <string name="err_msg_reg_user">Usuario no válido</string>
+    <string name="err_msg_reg_pass_incorrecta">Las contraseñas no coinciden</string>
+    <string name="msg_reg_correcto">Registro correcto</string>
+    <string name="not_reg_title">Nuevo usuario</string>
+    <string name="not_reg_msg">Se ha registrado el usuario $USER_NAME$</string>
+    <string name="err_msg_reg_user_incorrecto">El campo usuario no puede estar vacío</string>
+
+    <string name="msg_bienvenida">Bienvenido $USER_NAME$</string>
+    <string name="tv_descripcion">Descripción:</string>
+    <string name="tv_especificaciones">Especificaciones:</string>
+    <string name="bt_comprar">Añadir al carro</string>
+    <string name="tv_tipo_producto">Categoría:</string>
+    <string name="tv_precio">Precio:</string>
 </resources>
