@@ -7,6 +7,11 @@ package BD;
 public class MyBDManager {
 
     public String registrarUsuario(String user,String password,String date,String city){
-        return null;
+        return user;
     }
+
+    public String login(String user,String pass){
+        return pass.equals("null") ? user : null;
+    }
+
 }

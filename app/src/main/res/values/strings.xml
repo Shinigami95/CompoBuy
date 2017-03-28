@@ -18,6 +18,9 @@
     <string name="not_reg_title">Nuevo usuario</string>
     <string name="not_reg_msg">Se ha registrado el usuario $USER_NAME$</string>
     <string name="err_msg_reg_user_incorrecto">El campo usuario no puede estar vacío</string>
+    <string name="error_login">Error en identificación</string>
+    <string name="error_login_text">Usuario y contraseña incorrectos.</string>
+    <string name="aceptar">Aceptar</string>
 
     <string name="msg_bienvenida">Bienvenido $USER_NAME$</string>
     <string name="tv_descripcion">Descripción:</string>
@@ -25,4 +28,10 @@
     <string name="bt_comprar">Añadir al carro</string>
     <string name="tv_tipo_producto">Categoría:</string>
     <string name="tv_precio">Precio:</string>
+    <string name="tv_user_carro">Carro $USER$</string>
+    <string name="tv_precio_total">Precio total:</string>
+    <string name="bt_carro_compra">Comprar</string>
+    <string name="compo_buy">CompoBuy</string>
+    <string name="bt_registrarse">Registrarse</string>
+    <string name="bt_acceder">Acceder</string>
 </resources>

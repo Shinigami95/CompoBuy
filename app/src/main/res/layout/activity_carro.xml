@@ -7,69 +7,78 @@
     tools:context="com.api.compobuy.CarroActivity">
 
     <TextView
-        android:id="@+id/tv_bienvenido_user"
+        android:id="@+id/tv_carro_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/msg_bienvenida"
-        android:textSize="14sp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/tv_user_carro"
+        android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/bt_comprar"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/bt_carro_comprar"
+        android:layout_width="106dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
-        android:text="Button"
+        android:text="@string/bt_carro_compra"
+        app:layout_constraintHorizontal_bias="0.851"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lv_centros"
-        app:layout_constraintHorizontal_bias="0.853" />
+        app:layout_constraintTop_toBottomOf="@+id/lv_centros" />
 
     <TextView
         android:id="@+id/tv_precio_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginTop="17dp"
-        app:layout_constraintTop_toBottomOf="@+id/lv_centros"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="17dp"
+        android:text="@string/tv_precio_total"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.115" />
+        app:layout_constraintTop_toBottomOf="@+id/lv_centros" />
 
     <TextView
         android:id="@+id/tv_precio_total_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginTop="18dp"
-        app:layout_constraintTop_toBottomOf="@+id/lv_centros"
-        app:layout_constraintLeft_toRightOf="@+id/tv_precio_total"
+        android:layout_width="65dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="17dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/tv_precio_total"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/lv_centros" />
 
     <ListView
         android:id="@+id/lv_centros"
         android:layout_width="match_parent"
-        android:layout_height="510dp"
+        android:layout_height="428dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tv_tipo_producto"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_bienvenido_user" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_carro_user"
+        tools:layout_editor_absoluteY="107dp" />
 
 </android.support.constraint.ConstraintLayout>

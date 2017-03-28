@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/msg_bienvenida"
-            android:id="@+id/tv_bienvenido_user"
+            android:id="@+id/tv_carro_user"
             android:textSize="14sp" />
 
         <LinearLayout
