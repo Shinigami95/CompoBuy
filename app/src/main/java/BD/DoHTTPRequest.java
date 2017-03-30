@@ -45,11 +45,10 @@ public class DoHTTPRequest extends AsyncTask<String, Void, String> {
 
 
 
-    public DoHTTPRequest(AsyncResponse deleg, Context context, final int reqId, int progressBarId, String [] datos) {
+    public DoHTTPRequest(AsyncResponse deleg, Context context, int progressBarId) {
 
         delegate = deleg;
         mContext = context;
-        mReqId = reqId;
         mProgressBarId = progressBarId;
         errorMessage = "";
 
@@ -193,7 +192,7 @@ public class DoHTTPRequest extends AsyncTask<String, Void, String> {
                 return response;
             }
             else{
-                errorMessage = "Error al conectar con el servidor";
+                errorMessage = "Error al conectar con el servidor: "+statusCode;
                 urlConnection.disconnect();
                 return errorMessage;
             }

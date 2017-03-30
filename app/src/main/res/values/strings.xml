@@ -21,6 +21,7 @@
     <string name="error_login">Error en identificación</string>
     <string name="error_login_text">Usuario y contraseña incorrectos.</string>
     <string name="aceptar">Aceptar</string>
+    <string name="all">TODAS</string>
 
     <string name="msg_bienvenida">Bienvenido $USER_NAME$</string>
     <string name="tv_descripcion">Descripción:</string>

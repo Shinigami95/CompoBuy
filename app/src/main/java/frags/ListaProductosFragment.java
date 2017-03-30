@@ -6,11 +6,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.api.compobuy.R;
 
-public class ListaProductosFragment extends Fragment {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import BD.DoHTTPRequest;
+
+public class ListaProductosFragment extends Fragment
+                                    implements DoHTTPRequest.AsyncResponse{
     private OnListaProductosFragmentInteractionListener mListener;
 
     @Override
@@ -37,6 +49,43 @@ public class ListaProductosFragment extends Fragment {
         String text = tvBienv.getText().toString();
         text = text.replace("$USER_NAME$",usuario);
         tvBienv.setText(text);
+        DoHTTPRequest doHTTP = new DoHTTPRequest(this,getActivity(),-1);
+        doHTTP.prepCgetallcategoria();
+        doHTTP.execute();
+
+        doHTTP = new DoHTTPRequest(this,getActivity(),-1);
+        doHTTP.prepCgetallproduct();
+        doHTTP.execute();
+
+    }
+
+    ArrayAdapter<String> aaCategorias;
+    ArrayList<String> listaCat;
+
+    @Override
+    public void processFinish(String output, int mReqId) {
+        try {
+            JSONArray jsonArray = new JSONArray(output);
+            if (mReqId == DoHTTPRequest.GET_ALL_CATEGORIA) {
+                listaCat = new ArrayList<String>();
+                JSONObject jsonObj;
+                listaCat.add(getResources().getString(R.string.all));
+                for(int i=0; i<jsonArray.length(); i++){
+                    jsonObj = jsonArray.getJSONObject(i);
+                    listaCat.add(jsonObj.getString("nombre"));
+                }
+                Spinner spin = (Spinner) getView().findViewById(R.id.spinner);
+                aaCategorias = new ArrayAdapter<String>(getActivity(),R.layout.spin_categoria,listaCat);
+                spin.setAdapter(aaCategorias);
+
+            } else if (mReqId == DoHTTPRequest.GET_ALL_PRODUCT) {
+
+            } else if (mReqId == DoHTTPRequest.GET_CAT_PRODUCTO) {
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public interface OnListaProductosFragmentInteractionListener {

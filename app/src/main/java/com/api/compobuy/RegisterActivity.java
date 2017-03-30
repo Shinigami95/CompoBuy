@@ -10,10 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import BD.MyBDManager;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import BD.DoHTTPRequest;
 import dialogs.DateDialog;
 
-public class RegisterActivity extends AppCompatActivity implements DateDialog.GestorFecha{
+public class RegisterActivity extends AppCompatActivity implements DateDialog.GestorFecha, DoHTTPRequest.AsyncResponse {
 
     //se creara la actividad con el formulario del registro
     @Override
@@ -65,38 +68,9 @@ public class RegisterActivity extends AppCompatActivity implements DateDialog.Ge
         }
         //Si los datos son correctos
         else {
-            MyBDManager mbdm = new MyBDManager();
-            String username = mbdm.registrarUsuario(user,password,date,city);
-
-            //Si se ha introducido un usuario incorrecto (ya existe) -> mensajede error
-            if(username==null){
-                String err = getResources().getString(R.string.err_msg_reg_user);
-                Toast.makeText(getApplicationContext(), err, Toast.LENGTH_LONG).show();
-            }
-            //Realizar registro
-            else {
-                String msg = getResources().getString(R.string.msg_reg_correcto);
-                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                String notTitle = getResources().getString(R.string.not_reg_title);
-                //Mostrar notificacion de registro realizado
-                String notMsg = getResources().getString(R.string.not_reg_msg);
-                notMsg = notMsg.replace("$USER_NAME$",user);
-                NotificationCompat.Builder elconstructor =
-                        new NotificationCompat.Builder(this)
-                                .setSmallIcon(android.R.drawable.stat_sys_warning)
-                                .setContentTitle(notTitle)
-                                .setContentText(notMsg)
-                                .setAutoCancel(true)
-                                .setTicker(notTitle);
-                NotificationManager elnotificationmanager = (NotificationManager)
-                        getSystemService(getApplicationContext().NOTIFICATION_SERVICE);
-                elnotificationmanager.notify(1, elconstructor.build());
-                //Ir a la activity de menu principal
-                Intent i = new Intent(this,MenuPrincipalActivity.class);
-                i.putExtra("username",username);
-                startActivity(i);
-                finish();
-            }
+            DoHTTPRequest dHTTP = new DoHTTPRequest(this, this, -1);
+            dHTTP.prepCregister(user,password,date,city);
+            dHTTP.execute();
         }
     }
 
@@ -109,5 +83,48 @@ public class RegisterActivity extends AppCompatActivity implements DateDialog.Ge
     public void administrarFecha(int year, int month, int dayOfMonth) {
         EditText etDate = (EditText) findViewById(R.id.et_date);
         etDate.setText(dayOfMonth+"-"+month+"-"+year);
+    }
+
+    @Override
+    public void processFinish(String output, int mReqId) {
+        try {
+            if (mReqId == DoHTTPRequest.REGISTER) {
+                JSONObject json = new JSONObject(output);
+
+                String username = json.getString("nombre");
+
+                //Si se ha introducido un usuario incorrecto (ya existe) -> mensajede error
+                if (username == null) {
+                    String err = getResources().getString(R.string.err_msg_reg_user);
+                    Toast.makeText(getApplicationContext(), err, Toast.LENGTH_LONG).show();
+                }
+                //Realizar registro
+                else {
+                    String msg = getResources().getString(R.string.msg_reg_correcto);
+                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                    String notTitle = getResources().getString(R.string.not_reg_title);
+                    //Mostrar notificacion de registro realizado
+                    String notMsg = getResources().getString(R.string.not_reg_msg);
+                    notMsg = notMsg.replace("$USER_NAME$", username);
+                    NotificationCompat.Builder elconstructor =
+                            new NotificationCompat.Builder(this)
+                                    .setSmallIcon(android.R.drawable.stat_sys_warning)
+                                    .setContentTitle(notTitle)
+                                    .setContentText(notMsg)
+                                    .setAutoCancel(true)
+                                    .setTicker(notTitle);
+                    NotificationManager elnotificationmanager = (NotificationManager)
+                            getSystemService(getApplicationContext().NOTIFICATION_SERVICE);
+                    elnotificationmanager.notify(1, elconstructor.build());
+                    //Ir a la activity de menu principal
+                    Intent i = new Intent(this, MenuPrincipalActivity.class);
+                    i.putExtra("username", username);
+                    startActivity(i);
+                    finish();
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
