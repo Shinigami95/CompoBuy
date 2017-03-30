@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
         String user=etUser.getText().toString();
         String pass=etPass.getText().toString();
         user=mDB.login(user,pass);
-        if (user.equals(null)){
+        if (user == null){
             ErrorLoginDialog error=new ErrorLoginDialog();
             error.show(getFragmentManager(),"Error_Login");
         }
         else {
             Intent menuPrincipal=new Intent(this,MenuPrincipalActivity.class);
-            menuPrincipal.putExtra("usuario",user);
+            menuPrincipal.putExtra("username",user);
             startActivity(menuPrincipal);
             finish();
         }

@@ -24,6 +24,6 @@ public class ErrorLoginDialog extends DialogFragment {
             public void onClick(DialogInterface dialog, int which) {
             }
         });
-        return super.onCreateDialog(savedInstanceState);
+        return builder.create();
     }
 }

@@ -34,4 +34,6 @@
     <string name="compo_buy">CompoBuy</string>
     <string name="bt_registrarse">Registrarse</string>
     <string name="bt_acceder">Acceder</string>
+    <string name="it_carro">Ver carro</string>
+    <string name="it_log_out">Cerrar sesión</string>
 </resources>
