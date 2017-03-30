@@ -1,12 +1,12 @@
 package frags;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.api.compobuy.R;
 
@@ -32,8 +32,11 @@ public class ListaProductosFragment extends Fragment {
         }
     }
 
-    public void actualizarFragment(){
-
+    public void actualizarFragment(String usuario){
+        TextView tvBienv = (TextView) getView().findViewById(R.id.tv_bienvenido_user);
+        String text = tvBienv.getText().toString();
+        text = text.replace("$USER_NAME$",usuario);
+        tvBienv.setText(text);
     }
 
     public interface OnListaProductosFragmentInteractionListener {

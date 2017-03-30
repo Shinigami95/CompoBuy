@@ -55,6 +55,7 @@ public class MenuPrincipalActivity extends AppCompatActivity
 
     private void irAlCarro(){
         Intent i = new Intent(this,CarroActivity.class);
+        i.putExtra("username",user);
         startActivity(i);
     }
 
@@ -75,6 +76,6 @@ public class MenuPrincipalActivity extends AppCompatActivity
 
     @Override
     public void onListaProductosFragmentInteractionListener(ListaProductosFragment fr) {
-        fr.actualizarFragment();
+        fr.actualizarFragment(user);
     }
 }

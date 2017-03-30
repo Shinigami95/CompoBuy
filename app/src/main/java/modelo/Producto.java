@@ -13,16 +13,19 @@ public class Producto {
     public String especificaciones;
     public String imagen;
     public long idCategoria;
+    public long idCompra;
+
 
     public Producto(long id,String nomb){
         idComponente = id;
         nombre = nomb;
     }
 
-    public Producto(long id,String nomb,float prec){
+    public Producto(long id,String nomb,float prec, long idcomp){
         idComponente = id;
         nombre = nomb;
         precio = prec;
+        idCompra = idcomp;
     }
 
     public Producto(long id,String nomb,String desc,float prec,String espec,String img,long idCat){
