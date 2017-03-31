@@ -9,9 +9,9 @@ import java.io.InputStream;
 public
 class ImageGetter extends AsyncTask<String, Void, Bitmap> {
 
-    String uri;
-    int id;
-    AsyncImage delegate;
+    private String uri;
+    private int id;
+    public AsyncImage delegate;
 
     public interface AsyncImage {
         void imageLoadead(Bitmap bitmap, int mReqId);

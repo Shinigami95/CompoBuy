@@ -15,7 +15,7 @@ public class MenuPrincipalActivity extends AppCompatActivity
         implements ProductoFragment.OnProductoFragmentInteractionListener,
         ListaProductosFragment.OnListaProductosFragmentInteractionListener{
 
-    String user;
+    private String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

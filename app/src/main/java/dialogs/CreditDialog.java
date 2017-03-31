@@ -22,8 +22,8 @@ public class CreditDialog extends DialogFragment {
         public void aceptarCredito();
         public void cancelarCredito();
     }
-    View view;
-    GestorCredito gc;
+    private View view;
+    private GestorCredito gc;
 
     //indicar la interfaz del dialogo segun el layout dialog_login
     @Override

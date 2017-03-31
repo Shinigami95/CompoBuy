@@ -29,6 +29,11 @@ public class CarroActivity extends AppCompatActivity
         implements DoHTTPRequest.AsyncResponse, CreditDialog.GestorCredito {
 
     private String user;
+    private int posEliminar = -1;
+    private CustomArrayCarroAdapter aaCarro;
+    private ArrayList<Producto> listaProducto;
+    private double precioTotal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +72,7 @@ public class CarroActivity extends AppCompatActivity
         }
     }
 
-    int posEliminar = -1;
+
     private void eliminarProductoCarro(int pos){
         if(posEliminar == -1) {
             Producto prod = listaProducto.get(pos);
@@ -79,9 +84,7 @@ public class CarroActivity extends AppCompatActivity
         }
     }
 
-    private CustomArrayCarroAdapter aaCarro;
-    private ArrayList<Producto> listaProducto;
-    private double precioTotal;
+
     @Override
     public void processFinish(String output, int mReqId) {
         try {

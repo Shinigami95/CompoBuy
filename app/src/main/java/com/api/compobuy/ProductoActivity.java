@@ -8,8 +8,8 @@ import frags.ProductoFragment;
 
 public class ProductoActivity extends AppCompatActivity implements ProductoFragment.OnProductoFragmentInteractionListener{
 
-    long idC;
-    String username;
+    private long idC;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
