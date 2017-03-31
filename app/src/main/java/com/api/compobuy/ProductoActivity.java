@@ -3,11 +3,25 @@ package com.api.compobuy;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ProductoActivity extends AppCompatActivity {
+import BD.DoHTTPRequest;
+import frags.ProductoFragment;
 
+public class ProductoActivity extends AppCompatActivity implements ProductoFragment.OnProductoFragmentInteractionListener{
+
+    long idC;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producto);
+        Bundle ext = getIntent().getExtras();
+        if(ext != null){
+            idC = ext.getLong("idcomp");
+        }
+    }
+
+
+    @Override
+    public void onProductoFragmentInteractionListener(ProductoFragment fr) {
+        fr.actualizarFragment(idC);
     }
 }

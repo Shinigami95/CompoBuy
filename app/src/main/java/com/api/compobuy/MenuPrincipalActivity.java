@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import frags.ListaProductosFragment;
 import frags.ProductoFragment;
 
@@ -71,11 +70,24 @@ public class MenuPrincipalActivity extends AppCompatActivity
 
     @Override
     public void onProductoFragmentInteractionListener(ProductoFragment fr) {
-        fr.actualizarFragment();
     }
 
     @Override
     public void onListaProductosFragmentInteractionListener(ListaProductosFragment fr) {
         fr.actualizarFragment(user);
+    }
+
+    public void onListaProductosFragmentSeleccionarComponente(ListaProductosFragment fr, long idC) {
+        ProductoFragment pf = (ProductoFragment) getFragmentManager().findFragmentById(R.id.frag_prod_land);
+        //Si existe el fragment que muestra la informacion del centro, actualizara su informacion
+        if(pf!=null&&pf.getView()!=null) {
+            pf.actualizarFragment(idC);
+        }
+        //Si no existe el fragment llamara la actividad que muestre la info del centro indicado
+        else {
+            Intent i = new Intent(this, ProductoActivity.class);
+            i.putExtra("idcomp", idC);
+            startActivity(i);
+        }
     }
 }

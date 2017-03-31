@@ -78,11 +78,11 @@ public class DoHTTPRequest extends AsyncTask<String, Void, String> {
         }
     }
 
-    public void prepCgetproducto(String idcomp){
+    public void prepCgetproducto(long idcomp){
         try {
             mReqId = GET_PRODUCTO;
             param = "func=getproducto";
-            param += "&idcomp=" + URLEncoder.encode(idcomp, "UTF-8");
+            param += "&idcomp=" + URLEncoder.encode(idcomp+"", "UTF-8");
         } catch(UnsupportedEncodingException e){
 
         }

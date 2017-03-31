@@ -9,7 +9,7 @@ public class Producto {
     public long idComponente;
     public String nombre;
     public String descripcion;
-    public float precio;
+    public double precio;
     public String especificaciones;
     public String imagen;
     public long idCategoria;
@@ -28,7 +28,7 @@ public class Producto {
         idCompra = idcomp;
     }
 
-    public Producto(long id,String nomb,String desc,float prec,String espec,String img,long idCat){
+    public Producto(long id,String nomb,String desc,double prec,String espec,String img,long idCat){
         idComponente = id;
         nombre = nomb;
         descripcion = desc;
