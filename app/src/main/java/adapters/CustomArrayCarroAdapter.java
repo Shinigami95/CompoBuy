@@ -56,7 +56,7 @@ public class CustomArrayCarroAdapter extends BaseAdapter {
 
         TextView tvProducto = (TextView) rowView.findViewById(R.id.tv_precio_producto);
         String precio = lp.get(position).precio+"";
-        tvNombre.setText(precio);
+        tvProducto.setText(precio);
         return rowView;
     }
 }

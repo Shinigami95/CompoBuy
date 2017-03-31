@@ -40,8 +40,9 @@ public class DoHTTPRequest extends AsyncTask<String, Void, String> {
     public static final int GET_ALL_PRODUCT = 104;
     public static final int GET_ALL_CATEGORIA = 105;
     public static final int GET_CARRITO_USU = 106;
-    public static final int DELETE_CARRITO = 107;
-    public static final int ADD_CARRITO = 108;
+    public static final int DELETE_COMPO_CARRITO = 107;
+    public static final int DELETE_ALL_CARRITO = 108;
+    public static final int ADD_CARRITO = 109;
 
 
 
@@ -111,30 +112,40 @@ public class DoHTTPRequest extends AsyncTask<String, Void, String> {
     public void prepCgetcarritousu(String username){
         try {
             mReqId = GET_CARRITO_USU;
-            param = "func=login";
+            param = "func=getcarritousu";
             param += "&nombre=" + URLEncoder.encode(username, "UTF-8");
         } catch(UnsupportedEncodingException e){
 
         }
     }
 
-    public void prepCdeletecarrito(String username, String idCompra){
+    public void prepCdeleteCompocarrito(String username, long idCompra){
         try {
-            mReqId = DELETE_CARRITO;
+            mReqId = DELETE_COMPO_CARRITO;
             param = "func=deletecarrito";
             param += "&nombre=" + URLEncoder.encode(username, "UTF-8");
-            param += "&id=" + URLEncoder.encode(idCompra, "UTF-8");
+            param += "&id=" + URLEncoder.encode(idCompra+"", "UTF-8");
         } catch(UnsupportedEncodingException e){
 
         }
     }
 
-    public void prepCaddcarrito(String username, String idComponente){
+    public void prepCdeleteAllcarrito(String username){
+        try {
+            mReqId = DELETE_ALL_CARRITO;
+            param = "func=deleteallcarrito";
+            param += "&nombre=" + URLEncoder.encode(username, "UTF-8");
+        } catch(UnsupportedEncodingException e){
+
+        }
+    }
+
+    public void prepCaddcarrito(String username, long idComponente){
         try {
             mReqId = ADD_CARRITO;
             param = "func=addcarrito";
             param += "&nombre=" + URLEncoder.encode(username, "UTF-8");
-            param += "&idcomp=" + URLEncoder.encode(idComponente, "UTF-8");
+            param += "&idcomp=" + URLEncoder.encode(idComponente+"", "UTF-8");
         } catch(UnsupportedEncodingException e){
 
         }

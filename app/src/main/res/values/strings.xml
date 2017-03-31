@@ -21,7 +21,15 @@
     <string name="error_login">Error en identificación</string>
     <string name="error_login_text">Usuario y contraseña incorrectos.</string>
     <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
     <string name="all">TODAS</string>
+    <string name="add_carro_ok">Se ha añadido el producto a su carro</string>
+    <string name="add_carro_error">Se ha producido un error</string>
+    <string name="eliminar_carro_ok">Se ha eliminado el producto de su carro</string>
+    <string name="eliminar_carro_error">Se ha producido un error</string>
+    <string name="error_carrito">Tu carro está vacío</string>
+    <string name="compra_realizada">Se ha realizado la compra :)</string>
+    <string name="compra_error">Ha habido algún error al realizar la compra :(</string>
 
     <string name="msg_bienvenida">Bienvenido $USER_NAME$</string>
     <string name="tv_descripcion">Descripción:</string>
@@ -37,4 +45,10 @@
     <string name="bt_acceder">Acceder</string>
     <string name="it_carro">Ver carro</string>
     <string name="it_log_out">Cerrar sesión</string>
+    <string name="it_eliminar">Eliminar</string>
+    <string name="tv_credito">Tarjeta de dévito o crédito</string>
+    <string name="et_cred_titular">Nombre titular</string>
+    <string name="et_cred_numero">Número de tarjeta</string>
+    <string name="et_cred_fecha_caduc">Fecha de caducidad</string>
+    <string name="et_cred_cvc2">Código CVC2</string>
 </resources>

@@ -81,12 +81,13 @@ public class MenuPrincipalActivity extends AppCompatActivity
         ProductoFragment pf = (ProductoFragment) getFragmentManager().findFragmentById(R.id.frag_prod_land);
         //Si existe el fragment que muestra la informacion del centro, actualizara su informacion
         if(pf!=null&&pf.getView()!=null) {
-            pf.actualizarFragment(idC);
+            pf.actualizarFragment(idC,user);
         }
         //Si no existe el fragment llamara la actividad que muestre la info del centro indicado
         else {
             Intent i = new Intent(this, ProductoActivity.class);
             i.putExtra("idcomp", idC);
+            i.putExtra("username", user);
             startActivity(i);
         }
     }

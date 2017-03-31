@@ -14,8 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.api.compobuy.ProductoActivity;
 import com.api.compobuy.R;
@@ -42,7 +44,21 @@ public class ProductoFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //TODO muchoo
-        return inflater.inflate(R.layout.fragment_producto, container, false);
+        View v =  inflater.inflate(R.layout.fragment_producto, container, false);
+        Button butAddCarro = (Button) v.findViewById(R.id.bt_add_carro);
+        butAddCarro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addCarro(v);
+            }
+        });
+        return v;
+    }
+
+    private void addCarro(View v){
+        DoHTTPRequest doHTTP = new DoHTTPRequest(this,getActivity(),-1);
+        doHTTP.prepCaddcarrito(username,idComp);
+        doHTTP.execute();
     }
 
     @Override
@@ -57,7 +73,12 @@ public class ProductoFragment extends Fragment
         }
     }
 
-    public void actualizarFragment(long idC){
+    private String username;
+    private long idComp;
+
+    public void actualizarFragment(long idC, String user){
+        username = user;
+        idComp = idC;
         DoHTTPRequest doHTTP = new DoHTTPRequest(this,getActivity(),-1);
         doHTTP.prepCgetproducto(idC);
         doHTTP.execute();
@@ -85,6 +106,16 @@ public class ProductoFragment extends Fragment
 
                 ImageGetter imgGet = new ImageGetter(this,pathImg,0);
                 imgGet.execute();
+            } else if(mReqId == DoHTTPRequest.ADD_CARRITO){
+                JSONObject jsonObj = new JSONObject(output);
+                String status = jsonObj.getString("status");
+                if(status.equals("ok")){
+                    String msg = getResources().getString(R.string.add_carro_ok);
+                    Toast.makeText(getActivity().getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                } else {
+                    String msg = getResources().getString(R.string.add_carro_error);;
+                    Toast.makeText(getActivity().getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();

@@ -9,6 +9,8 @@ import frags.ProductoFragment;
 public class ProductoActivity extends AppCompatActivity implements ProductoFragment.OnProductoFragmentInteractionListener{
 
     long idC;
+    String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,12 +18,13 @@ public class ProductoActivity extends AppCompatActivity implements ProductoFragm
         Bundle ext = getIntent().getExtras();
         if(ext != null){
             idC = ext.getLong("idcomp");
+            username = ext.getString("username");
         }
     }
 
 
     @Override
     public void onProductoFragmentInteractionListener(ProductoFragment fr) {
-        fr.actualizarFragment(idC);
+        fr.actualizarFragment(idC,username);
     }
 }

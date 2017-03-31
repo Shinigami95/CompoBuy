@@ -21,11 +21,10 @@ public class Producto {
         nombre = nomb;
     }
 
-    public Producto(long id,String nomb,float prec, long idcomp){
-        idComponente = id;
+    public Producto(String nomb, double prec, long idcompra){
         nombre = nomb;
         precio = prec;
-        idCompra = idcomp;
+        idCompra = idcompra;
     }
 
     public Producto(long id,String nomb,String desc,double prec,String espec,String img,long idCat){
