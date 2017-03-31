@@ -81,7 +81,7 @@ public class ListaProductosFragment extends Fragment
                 aaCategorias = new ArrayAdapter<String>(getActivity(),R.layout.spin_categoria,listaCat);
                 spin.setAdapter(aaCategorias);
 
-            } else if (mReqId == DoHTTPRequest.GET_ALL_PRODUCT) {
+            } else if (mReqId == DoHTTPRequest.GET_ALL_PRODUCT || mReqId == DoHTTPRequest.GET_CAT_PRODUCTO) {
                 listaProd=new ArrayList<Producto>();
                 for(int i=0; i<jsonArray.length(); i++) {
                     jsonObj = jsonArray.getJSONObject(i);
@@ -90,8 +90,6 @@ public class ListaProductosFragment extends Fragment
                 aaProductos = new CustomArrayProductosAdapter(getActivity(),listaProd);
                 ListView lv = (ListView)getView().findViewById(R.id.lv_productos);
                 lv.setAdapter(aaProductos);
-            } else if (mReqId == DoHTTPRequest.GET_CAT_PRODUCTO) {
-
             }
         } catch (JSONException e) {
             e.printStackTrace();
