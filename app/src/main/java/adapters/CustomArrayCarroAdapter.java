@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import com.api.compobuy.R;
 
-import modelo.ListaProductos;
+import java.util.ArrayList;
+
+import modelo.Producto;
 
 /**
  * Created by Jorge on 30/03/2017.
@@ -18,11 +20,11 @@ import modelo.ListaProductos;
 
 public class CustomArrayCarroAdapter extends BaseAdapter {
 
-    private ListaProductos lp;
+    private ArrayList<Producto> lp;
     private Context context;
     private LayoutInflater inflater;
 
-    public CustomArrayCarroAdapter(Activity activity, ListaProductos lista) {
+    public CustomArrayCarroAdapter(Activity activity, ArrayList<Producto> lista) {
         lp = lista;
         context = activity;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -30,17 +32,17 @@ public class CustomArrayCarroAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return lp.lista.size();
+        return lp.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return lp.lista.get(position);
+        return lp.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return lp.lista.get(position).idComponente;
+        return lp.get(position).idComponente;
     }
 
     @Override
@@ -49,11 +51,11 @@ public class CustomArrayCarroAdapter extends BaseAdapter {
         rowView = inflater.inflate(context.getResources().getLayout(R.layout.lv_carro),null);
 
         TextView tvNombre = (TextView) rowView.findViewById(R.id.tv_nombre_producto);
-        String nombreProducto = lp.lista.get(position).nombre;
+        String nombreProducto = lp.get(position).nombre;
         tvNombre.setText(nombreProducto);
 
         TextView tvProducto = (TextView) rowView.findViewById(R.id.tv_precio_producto);
-        String precio = lp.lista.get(position).precio+"";
+        String precio = lp.get(position).precio+"";
         tvNombre.setText(precio);
         return rowView;
     }

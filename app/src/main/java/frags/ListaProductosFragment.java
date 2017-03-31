@@ -2,13 +2,12 @@ package frags;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.api.compobuy.R;
@@ -20,6 +19,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import BD.DoHTTPRequest;
+import adapters.CustomArrayProductosAdapter;
+import modelo.Producto;
 
 public class ListaProductosFragment extends Fragment
                                     implements DoHTTPRequest.AsyncResponse{
@@ -61,14 +62,16 @@ public class ListaProductosFragment extends Fragment
 
     ArrayAdapter<String> aaCategorias;
     ArrayList<String> listaCat;
+    CustomArrayProductosAdapter aaProductos;
+    ArrayList<Producto> listaProd;
 
     @Override
     public void processFinish(String output, int mReqId) {
         try {
             JSONArray jsonArray = new JSONArray(output);
+            JSONObject jsonObj;
             if (mReqId == DoHTTPRequest.GET_ALL_CATEGORIA) {
                 listaCat = new ArrayList<String>();
-                JSONObject jsonObj;
                 listaCat.add(getResources().getString(R.string.all));
                 for(int i=0; i<jsonArray.length(); i++){
                     jsonObj = jsonArray.getJSONObject(i);
@@ -79,7 +82,14 @@ public class ListaProductosFragment extends Fragment
                 spin.setAdapter(aaCategorias);
 
             } else if (mReqId == DoHTTPRequest.GET_ALL_PRODUCT) {
-
+                listaProd=new ArrayList<Producto>();
+                for(int i=0; i<jsonArray.length(); i++) {
+                    jsonObj = jsonArray.getJSONObject(i);
+                    listaProd.add(new Producto(jsonObj.getInt("idcomp"),jsonObj.getString("nombre")));
+                }
+                aaProductos = new CustomArrayProductosAdapter(getActivity(),listaProd);
+                ListView lv = (ListView)getView().findViewById(R.id.lv_productos);
+                lv.setAdapter(aaProductos);
             } else if (mReqId == DoHTTPRequest.GET_CAT_PRODUCTO) {
 
             }
